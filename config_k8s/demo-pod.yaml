@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-demo-pod
+spec:
+  containers:
+    - name: demo
+      image: alpine
+      command: ["sleep", "3600"]
+      env:
+        - name: LEVELS
+          valueFrom:
+            configMapKeyRef:
+              name: devops-demo
+              key: levels
+        - name: UI_PROPERTIES_FILE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: devops-demo
+              key: level_properties_file_name
+
+      volumeMounts:
+        - name: config
+          mountPath: "/config"
+          readOnly: true
+  volumes:
+    - name: config
+      configMap:
+       name: devops-demo
+       items:
+        - key: "level.properties"
+          path: "level.properties"
