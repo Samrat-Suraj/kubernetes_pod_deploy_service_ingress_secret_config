@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: react-todo
-        image: trainwithshubham/react-django-app:latest
+        image: samratsooraj/forkfly:latest
         ports:
         - containerPort: 8001
