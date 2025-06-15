@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-todo-deployment
+  name: forkfly-deployment
   labels:
-    app: react-todo
+    app: forkfly-app
 spec:
   replicas: 5
   selector:
     matchLabels:
-      app: react-todo
+      app: forkfly-app
   template:
     metadata:
       labels:
-        app: react-todo
+        app: forkfly-app
     spec:
       containers:
-      - name: react-todo
+      - name: forkfly-app-ctl
         image: samratsooraj/forkfly:latest
         ports:
         - containerPort: 8001
